@@ -10,29 +10,35 @@ import java.util.List;
 @RequestMapping("/api/stocks")
 public class StockController {
 
-    private final StockService service;
+    private final StockService stockService;
 
-    public StockController(StockService service) {
-        this.service = service;
+    public StockController(StockService stockService) {
+        this.stockService = stockService;
     }
 
     @PostMapping
-    public Stock create(@RequestBody Stock stock) {
-        return service.createStock(stock);
+    public Stock createStock(@RequestBody Stock stock) {
+        return stockService.createStock(stock);
+    }
+
+    @PutMapping("/{id}")
+    public Stock updateStock(@PathVariable Long id,
+                             @RequestBody Stock stock) {
+        return stockService.updateStock(id, stock);
     }
 
     @GetMapping("/{id}")
-    public Stock get(@PathVariable Long id) {
-        return service.getStockById(id);
+    public Stock getStockById(@PathVariable Long id) {
+        return stockService.getStockById(id);
     }
 
     @GetMapping
-    public List<Stock> all() {
-        return service.getAllStocks();
+    public List<Stock> getAllStocks() {
+        return stockService.getAllStocks();
     }
 
     @PatchMapping("/{id}/deactivate")
-    public void deactivate(@PathVariable Long id) {
-        service.deactivateStock(id);
+    public void deactivateStock(@PathVariable Long id) {
+        stockService.deactivateStock(id);
     }
 }
