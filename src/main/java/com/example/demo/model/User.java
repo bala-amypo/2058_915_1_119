@@ -25,7 +25,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserPortfolio> portfolios;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String email, String password, String role, LocalDateTime createdAt) {
         this.email = email;
@@ -34,5 +35,51 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    // getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+    
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<UserPortfolio> getPortfolios() {
+        return portfolios;
+    }
+
+    public void setPortfolios(List<UserPortfolio> portfolios) {
+        this.portfolios = portfolios;
+    }
 }

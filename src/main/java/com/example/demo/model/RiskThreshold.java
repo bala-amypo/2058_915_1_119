@@ -14,9 +14,11 @@ public class RiskThreshold {
     private UserPortfolio portfolio;
 
     private Double maxSingleStockPercentage;
+
     private Double maxOverallVolatility;
 
-    public RiskThreshold() {}
+    public RiskThreshold() {
+    }
 
     public RiskThreshold(UserPortfolio portfolio,
                          Double maxSingleStockPercentage,
@@ -26,5 +28,35 @@ public class RiskThreshold {
         this.maxOverallVolatility = maxOverallVolatility;
     }
 
-    // getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public UserPortfolio getPortfolio() {
+        return portfolio;
+    }
+    
+    public void setPortfolio(UserPortfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getMaxSingleStockPercentage() {
+        return maxSingleStockPercentage;
+    }
+    
+    public void setMaxSingleStockPercentage(Double maxSingleStockPercentage) {
+        this.maxSingleStockPercentage = maxSingleStockPercentage;
+    }
+
+    public Double getMaxOverallVolatility() {
+        return maxOverallVolatility;
+    }
+    
+    public void setMaxOverallVolatility(Double maxOverallVolatility) {
+        this.maxOverallVolatility = maxOverallVolatility;
+    }
 }

@@ -15,10 +15,13 @@ public class RiskAnalysisResult {
     private UserPortfolio portfolio;
 
     private LocalDateTime analysisDate;
+
     private Double highestStockPercentage;
+
     private Boolean isHighRisk;
 
-    public RiskAnalysisResult() {}
+    public RiskAnalysisResult() {
+    }
 
     public RiskAnalysisResult(UserPortfolio portfolio,
                               LocalDateTime analysisDate,
@@ -30,5 +33,43 @@ public class RiskAnalysisResult {
         this.isHighRisk = isHighRisk;
     }
 
-    // getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public UserPortfolio getPortfolio() {
+        return portfolio;
+    }
+    
+    public void setPortfolio(UserPortfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getAnalysisDate() {
+        return analysisDate;
+    }
+    
+    public void setAnalysisDate(LocalDateTime analysisDate) {
+        this.analysisDate = analysisDate;
+    }
+
+    public Double getHighestStockPercentage() {
+        return highestStockPercentage;
+    }
+    
+    public void setHighestStockPercentage(Double highestStockPercentage) {
+        this.highestStockPercentage = highestStockPercentage;
+    }
+
+    public Boolean getIsHighRisk() {
+        return isHighRisk;
+    }
+    
+    public void setIsHighRisk(Boolean isHighRisk) {
+        this.isHighRisk = isHighRisk;
+    }
 }

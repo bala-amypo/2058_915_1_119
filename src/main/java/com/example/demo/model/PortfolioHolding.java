@@ -18,9 +18,11 @@ public class PortfolioHolding {
     private Stock stock;
 
     private Double quantity;
+
     private BigDecimal marketValue;
 
-    public PortfolioHolding() {}
+    public PortfolioHolding() {
+    }
 
     public PortfolioHolding(UserPortfolio portfolio, Stock stock,
                             Double quantity, BigDecimal marketValue) {
@@ -30,5 +32,43 @@ public class PortfolioHolding {
         this.marketValue = marketValue;
     }
 
-    // getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public UserPortfolio getPortfolio() {
+        return portfolio;
+    }
+    
+    public void setPortfolio(UserPortfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+    
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getMarketValue() {
+        return marketValue;
+    }
+    
+    public void setMarketValue(BigDecimal marketValue) {
+        this.marketValue = marketValue;
+    }
 }
