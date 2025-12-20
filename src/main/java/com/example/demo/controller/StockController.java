@@ -9,6 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/stocks")
+@AutoConfigureMockMvc(addFilters = false)
+
 public class StockController {
 
     private final StockService stockService;

@@ -9,6 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/portfolios")
+@AutoConfigureMockMvc(addFilters = false)
+
 public class UserPortfolioController {
 
     private final UserPortfolioService portfolioService;
