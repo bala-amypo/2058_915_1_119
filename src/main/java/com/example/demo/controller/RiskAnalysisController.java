@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/risk-analysis")
 @AutoConfigureMockMvc(addFilters = false)
-
 public class RiskAnalysisController {
 
     private final RiskAnalysisService riskAnalysisService;

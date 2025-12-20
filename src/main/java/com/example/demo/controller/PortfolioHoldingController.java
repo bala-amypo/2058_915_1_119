@@ -9,8 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/holdings")
-@AutoConfigureMockMvc(addFilters = false)
-
 public class PortfolioHoldingController {
 
     private final PortfolioHoldingService holdingService;
