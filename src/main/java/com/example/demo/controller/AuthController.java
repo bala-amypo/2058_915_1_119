@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@AutoConfigureMockMvc(addFilters = false)
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;

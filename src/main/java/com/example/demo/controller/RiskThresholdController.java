@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/risk-thresholds")
+@AutoConfigureMockMvc(addFilters = false)
+
 public class RiskThresholdController {
 
     private final RiskThresholdService thresholdService;
