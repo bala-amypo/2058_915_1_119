@@ -20,7 +20,7 @@ public class AuthController {
     @PostMapping("/login")
     public ApiResponse<AuthResponse> login(@RequestBody LoginRequest request) {
 
-        // Dummy authentication logic (no security)
+        // No security, no authentication manager
         User user = userService.findByEmail(request.getEmail());
 
         AuthResponse response = new AuthResponse(
@@ -30,6 +30,6 @@ public class AuthController {
                 user.getRole()
         );
 
-        return new ApiResponse<>(true, "Login successful (No Security Mode)", response);
+        return new ApiResponse<>(true, "Login successful (No Security)", response);
     }
 }
