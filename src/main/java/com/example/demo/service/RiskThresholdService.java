@@ -14,5 +14,4 @@ public ResponseEntity<?> analyzeRisk(
 
     return ResponseEntity.ok(riskThresholdService.evaluateRisk(request));
 }
-
 }
