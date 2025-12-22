@@ -1,4 +1,7 @@
 package com.example.demo.dto;
+import java.time.OffsetDateTime;
+
+private OffsetDateTime createdAt;
 
 public class LoginRequest {
 
