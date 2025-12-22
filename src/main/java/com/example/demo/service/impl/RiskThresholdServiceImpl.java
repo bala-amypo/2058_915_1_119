@@ -1,33 +1,43 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.RiskThresholdRequest;
-import com.example.demo.dto.RiskThresholdResponse;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.RiskThreshold;
+import com.example.demo.model.UserPortfolio;
+import com.example.demo.repository.RiskThresholdRepository;
+import com.example.demo.repository.UserPortfolioRepository;
 import com.example.demo.service.RiskThresholdService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RiskThresholdServiceImpl implements RiskThresholdService {
 
+    private final RiskThresholdRepository thresholdRepository;
+    private final UserPortfolioRepository portfolioRepository;
+
+    public RiskThresholdServiceImpl(RiskThresholdRepository thresholdRepository,
+                                    UserPortfolioRepository portfolioRepository) {
+        this.thresholdRepository = thresholdRepository;
+        this.portfolioRepository = portfolioRepository;
+    }
+
     @Override
-    public RiskThresholdResponse evaluateRisk(RiskThresholdRequest request) {
+    public RiskThreshold setThreshold(Long portfolioId, RiskThreshold threshold) {
 
-        RiskThresholdResponse response = new RiskThresholdResponse();
+        UserPortfolio portfolio = portfolioRepository.findById(portfolioId)
+                .orElseThrow(() -> new ResourceNotFoundException("Portfolio not found"));
 
-        if (request == null || request.getPortfolio() == null) {
-            response.setHighRisk(false);
-            response.setMessage("Invalid request");
-            return response;
+        if (threshold.getMaxSingleStockPercentage() < 0 ||
+            threshold.getMaxSingleStockPercentage() > 100) {
+            throw new IllegalArgumentException("Invalid max single stock percentage");
         }
 
-        boolean isHighRisk =
-                request.getMaxSingleStockPercentage() > 50 ||
-                request.getMaxOverallVolatility() > 30;
+        threshold.setPortfolio(portfolio);
+        return thresholdRepository.save(threshold);
+    }
 
-        response.setHighRisk(isHighRisk);
-        response.setMessage(
-                isHighRisk ? "High risk portfolio" : "Safe portfolio"
-        );
-
-        return response;
+    @Override
+    public RiskThreshold getThresholdForPortfolio(Long portfolioId) {
+        return thresholdRepository.findByPortfolioId(portfolioId)
+                .orElseThrow(() -> new ResourceNotFoundException("Risk threshold not found"));
     }
 }
