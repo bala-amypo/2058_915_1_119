@@ -8,27 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/stocks")
 public class StockController {
     @Autowired
     private StockService stockService;
     
-    public ResponseEntity<Stock> createStock(Stock stock) {
+    @PostMapping
+    public ResponseEntity<Stock> createStock(@RequestBody Stock stock) {
         return ResponseEntity.ok(stockService.createStock(stock));
     }
     
-    public ResponseEntity<Stock> updateStock(Long id, Stock stock) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Stock> updateStock(@PathVariable Long id, @RequestBody Stock stock) {
         return ResponseEntity.ok(stockService.updateStock(id, stock));
     }
     
-    public ResponseEntity<Stock> getStock(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Stock> getStock(@PathVariable Long id) {
         return ResponseEntity.ok(stockService.getStockById(id));
     }
     
+    @GetMapping
     public ResponseEntity<List<Stock>> getAllStocks() {
         return ResponseEntity.ok(stockService.getAllStocks());
     }
     
-    public ResponseEntity<Void> deactivateStock(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deactivateStock(@PathVariable Long id) {
         stockService.deactivateStock(id);
         return ResponseEntity.ok().build();
     }

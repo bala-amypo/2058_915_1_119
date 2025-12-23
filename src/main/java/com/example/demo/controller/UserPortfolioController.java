@@ -7,15 +7,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/portfolios")
 public class UserPortfolioController {
     @Autowired
     private UserPortfolioService portfolioService;
     
-    public ResponseEntity<UserPortfolio> createPortfolio(UserPortfolio portfolio) {
+    @PostMapping
+    public ResponseEntity<UserPortfolio> createPortfolio(@RequestBody UserPortfolio portfolio) {
         return ResponseEntity.ok(portfolioService.createPortfolio(portfolio));
     }
     
-    public ResponseEntity<UserPortfolio> getPortfolio(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<UserPortfolio> getPortfolio(@PathVariable Long id) {
         return ResponseEntity.ok(portfolioService.getPortfolioById(id));
     }
 }
