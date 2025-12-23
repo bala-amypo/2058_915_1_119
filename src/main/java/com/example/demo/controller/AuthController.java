@@ -1,3 +1,16 @@
+package com.example.demo.controller;
+
+import com.example.demo.dto.ApiResponse;
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.dto.LoginRequest;
+import com.example.demo.model.User;
+import com.example.demo.service.UserService;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -11,20 +24,12 @@ public class AuthController {
     @PostMapping("/login")
     public ApiResponse<AuthResponse> login(@RequestBody LoginRequest request) {
 
-        // ✅ Validate request
-        if (request.getEmail() == null || request.getPassword() == null) {
-            return new ApiResponse<>(false, "Email or password is missing", null);
-        }
-
-        // ✅ Fetch user
         User user = userService.findByEmail(request.getEmail());
 
-        // ✅ Handle user not found
         if (user == null) {
             return new ApiResponse<>(false, "Invalid email", null);
         }
 
-        // ❌ Password not checked (as you said: no security)
         AuthResponse response = new AuthResponse(
                 "DUMMY_TOKEN",
                 user.getId(),
@@ -32,6 +37,6 @@ public class AuthController {
                 user.getRole()
         );
 
-        return new ApiResponse<>(true, "Login successful (No Security)", response);
+        return new ApiResponse<>(true, "Login successful", response);
     }
 }
