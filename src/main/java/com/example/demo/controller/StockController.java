@@ -2,42 +2,34 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Stock;
 import com.example.demo.service.StockService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/stocks")
 public class StockController {
-
-    private final StockService stockService;
-
-    public StockController(StockService stockService) {
-        this.stockService = stockService;
+    @Autowired
+    private StockService stockService;
+    
+    public ResponseEntity<Stock> createStock(Stock stock) {
+        return ResponseEntity.ok(stockService.createStock(stock));
     }
-
-    @PostMapping
-    public Stock createStock(@RequestBody Stock stock) {
-        return stockService.createStock(stock);
+    
+    public ResponseEntity<Stock> updateStock(Long id, Stock stock) {
+        return ResponseEntity.ok(stockService.updateStock(id, stock));
     }
-
-    @PutMapping("/{id}")
-    public Stock updateStock(@PathVariable Long id, @RequestBody Stock stock) {
-        return stockService.updateStock(id, stock);
+    
+    public ResponseEntity<Stock> getStock(Long id) {
+        return ResponseEntity.ok(stockService.getStockById(id));
     }
-
-    @GetMapping("/{id}")
-    public Stock getStockById(@PathVariable Long id) {
-        return stockService.getStockById(id);
+    
+    public ResponseEntity<List<Stock>> getAllStocks() {
+        return ResponseEntity.ok(stockService.getAllStocks());
     }
-
-    @GetMapping
-    public List<Stock> getAllStocks() {
-        return stockService.getAllStocks();
-    }
-
-    @PatchMapping("/{id}/deactivate")
-    public void deactivateStock(@PathVariable Long id) {
+    
+    public ResponseEntity<Void> deactivateStock(Long id) {
         stockService.deactivateStock(id);
+        return ResponseEntity.ok().build();
     }
 }

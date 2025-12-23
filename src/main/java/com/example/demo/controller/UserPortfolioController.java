@@ -2,32 +2,20 @@ package com.example.demo.controller;
 
 import com.example.demo.model.UserPortfolio;
 import com.example.demo.service.UserPortfolioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/portfolios")
 public class UserPortfolioController {
-
-    private final UserPortfolioService userPortfolioService;
-
-    public UserPortfolioController(UserPortfolioService userPortfolioService) {
-        this.userPortfolioService = userPortfolioService;
+    @Autowired
+    private UserPortfolioService portfolioService;
+    
+    public ResponseEntity<UserPortfolio> createPortfolio(UserPortfolio portfolio) {
+        return ResponseEntity.ok(portfolioService.createPortfolio(portfolio));
     }
-
-    @PostMapping
-    public UserPortfolio createPortfolio(@RequestBody UserPortfolio portfolio) {
-        return userPortfolioService.createPortfolio(portfolio);
-    }
-
-    @GetMapping("/{id}")
-    public UserPortfolio getPortfolioById(@PathVariable Long id) {
-        return userPortfolioService.getPortfolioById(id);
-    }
-
-    @GetMapping("/user/{userId}")
-    public List<UserPortfolio> getPortfoliosByUser(@PathVariable Long userId) {
-        return userPortfolioService.getPortfoliosByUser(userId);
+    
+    public ResponseEntity<UserPortfolio> getPortfolio(Long id) {
+        return ResponseEntity.ok(portfolioService.getPortfolioById(id));
     }
 }
