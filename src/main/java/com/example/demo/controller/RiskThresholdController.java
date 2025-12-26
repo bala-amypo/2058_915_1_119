@@ -7,16 +7,14 @@ import com.example.demo.model.RiskThreshold;
 @RestController
 @RequestMapping("/api/risk-thresholds")
 public class RiskThresholdController {
-    
-    @PostMapping("/{portfolioId}")
-    public ResponseEntity<RiskThreshold> createThreshold(
-            @PathVariable Long portfolioId,
-            @RequestBody RiskThreshold threshold) {
-        return ResponseEntity.ok(threshold);
-    }
-    
-    @GetMapping("/{portfolioId}")
-    public ResponseEntity<RiskThreshold> getThreshold(@PathVariable Long portfolioId) {
-        return ResponseEntity.ok(new RiskThreshold());
-    }
+    @PostMapping
+public RiskThreshold create(@RequestBody RiskThreshold threshold)
+    @PutMapping("/{id}")
+public RiskThreshold update(@PathVariable Long id, @RequestBody RiskThreshold threshold)
+    @GetMapping("/active")
+public RiskThreshold getActive()
+    @GetMapping("/{id}")
+public RiskThreshold getById(@PathVariable Long id)
+    @GetMapping
+public List<RiskThreshold> getAll()
 }
