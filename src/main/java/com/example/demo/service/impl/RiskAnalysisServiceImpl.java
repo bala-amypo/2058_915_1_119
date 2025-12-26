@@ -32,8 +32,11 @@ public class RiskAnalysisServiceImpl implements RiskAnalysisService {
     @Override
     public RiskAnalysisResult analyzePortfolio(Long portfolioId) {
 
-        UserPortfolio portfolio = portfolioRepository.findById(portfolioId)
-                .orElseThrow(() -> new RuntimeException("Not found"));
+        UserPortfolio portfolio = portfolioRepository.findById(portfolioId);
+if (portfolio == null) {
+    throw new RuntimeException("Not found");
+}
+
 
         RiskThreshold threshold = thresholdRepository.findByActiveTrue()
                 .orElseThrow(() -> new RuntimeException("Not found"));
