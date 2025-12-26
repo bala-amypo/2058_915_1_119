@@ -21,4 +21,20 @@ public class RiskAnalysisResult {
     
     public Timestamp getAnalysisDate() { return analysisDate; }
     public void setAnalysisDate(Timestamp analysisDate) { this.analysisDate = analysisDate; }
+    public void setPortfolio(UserPortfolio portfolio) {
+    this.portfolio = portfolio;
+}
+
+public void setHighestSectorPercentage(Double highestSectorPercentage) {
+    this.highestSectorPercentage = highestSectorPercentage;
+}
+
+public void setIsHighRisk(Boolean isHighRisk) {
+    this.isHighRisk = isHighRisk;
+}
+
+public void setNotes(String notes) {
+    this.notes = notes;
+}
+
 }
