@@ -5,7 +5,8 @@ public class Stock {
     private String ticker;
     private String companyName;
     private String sector;
-    
+    private Boolean active = true;
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     
@@ -17,4 +18,7 @@ public class Stock {
     
     public String getSector() { return sector; }
     public void setSector(String sector) { this.sector = sector; }
+    
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }

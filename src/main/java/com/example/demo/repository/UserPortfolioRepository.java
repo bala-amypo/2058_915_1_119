@@ -6,7 +6,5 @@ import java.util.List;
 
 @Repository
 public interface UserPortfolioRepository {
-    UserPortfolio save(UserPortfolio portfolio);
-    UserPortfolio findById(Long id);
     List<UserPortfolio> findByUserId(Long userId);
 }

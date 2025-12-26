@@ -6,6 +6,5 @@ import java.util.List;
 
 @Repository
 public interface PortfolioHoldingRepository {
-    PortfolioHolding save(PortfolioHolding holding);
     List<PortfolioHolding> findByPortfolioId(Long portfolioId);
 }
