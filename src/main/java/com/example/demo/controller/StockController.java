@@ -33,9 +33,10 @@ public class StockController {
         return ResponseEntity.ok(stockService.getAllStocks());
     }
     
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deactivateStock(@PathVariable Long id) {
-        stockService.deactivateStock(id);
-        return ResponseEntity.ok().build();
-    }
+    @PutMapping("/{id}/deactivate")
+public ResponseEntity<?> deactivateStock(@PathVariable Long id) {
+    stockService.deactivateStock(id);
+    return ResponseEntity.ok("Stock deactivated");
+}
+
 }
