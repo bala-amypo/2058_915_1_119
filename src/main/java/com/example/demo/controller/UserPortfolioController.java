@@ -25,5 +25,9 @@ public class UserPortfolioController {
 public ResponseEntity<?> getPortfoliosByUser(@PathVariable Long userId) {
     return ResponseEntity.ok(userPortfolioService.getPortfoliosByUser(userId));
 }
-    
+    @PutMapping("/{id}/deactivate")
+public ResponseEntity<?> deactivatePortfolio(@PathVariable Long id) {
+    userPortfolioService.deactivatePortfolio(id);
+    return ResponseEntity.ok("Portfolio deactivated");
+}
 }
