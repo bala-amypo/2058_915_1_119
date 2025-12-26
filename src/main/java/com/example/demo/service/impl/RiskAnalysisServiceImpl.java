@@ -8,4 +8,10 @@ import java.util.List;
 @Service
 public class RiskAnalysisServiceImpl implements RiskAnalysisService {
     public List<RiskAnalysisResult> getAnalysesForPortfolio(Long portfolioId) { return List.of(); }
+    public RiskAnalysisServiceImpl(
+    RiskAnalysisResultRepository resultRepo,
+    UserPortfolioRepository portfolioRepo,
+    PortfolioHoldingRepository holdingRepo,
+    RiskThresholdRepository thresholdRepo
+)
 }
