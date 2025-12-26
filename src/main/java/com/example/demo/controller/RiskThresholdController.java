@@ -1,45 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.RiskThreshold;
 import com.example.demo.service.RiskThresholdService;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/risk-thresholds")
-@Tag(name = "risk-threshold-controller")
 public class RiskThresholdController {
-
-    private final RiskThresholdService thresholdService;
-
-    public RiskThresholdController(RiskThresholdService thresholdService) {
-        this.thresholdService = thresholdService;
-    }
-
-    @PostMapping
-    public RiskThreshold create(@RequestBody RiskThreshold threshold) {
-        return thresholdService.createThreshold(threshold);
-    }
-
-    @PutMapping("/{id}")
-    public RiskThreshold update(@PathVariable Long id, @RequestBody RiskThreshold threshold) {
-        return thresholdService.updateThreshold(id, threshold);
-    }
-
-    @GetMapping("/active")
-    public RiskThreshold getActive() {
-        return thresholdService.getActiveThreshold();
-    }
-
-    @GetMapping("/{id}")
-    public RiskThreshold getById(@PathVariable Long id) {
-        return thresholdService.getThresholdById(id);
-    }
-
-    @GetMapping
-    public List<RiskThreshold> getAll() {
-        return thresholdService.getAllThresholds();
-    }
+    
+    @Autowired
+    private RiskThresholdService thresholdService;
 }
