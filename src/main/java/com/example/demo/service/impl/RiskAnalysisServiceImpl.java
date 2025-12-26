@@ -17,13 +17,6 @@ public RiskAnalysisResult analyzePortfolio(Long portfolioId) {
 
 @Override
 public RiskAnalysisResult getAnalysisById(Long id) {
-    // implementation
-}
-
-@Override
-public List<RiskAnalysisResult> getAnalysesForPortfolio(Long portfolioId) {
-    // implementation
-
     public List<RiskAnalysisResult> getAnalysesForPortfolio(Long portfolioId) { return List.of(); }
     public RiskAnalysisServiceImpl(
     RiskAnalysisResultRepository resultRepo,
