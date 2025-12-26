@@ -10,6 +10,20 @@ import java.util.List;
 
 @Service
 public class RiskAnalysisServiceImpl implements RiskAnalysisService {
+    @Override
+public RiskAnalysisResult analyzePortfolio(Long portfolioId) {
+    // implementation
+}
+
+@Override
+public RiskAnalysisResult getAnalysisById(Long id) {
+    // implementation
+}
+
+@Override
+public List<RiskAnalysisResult> getAnalysesForPortfolio(Long portfolioId) {
+    // implementation
+
     public List<RiskAnalysisResult> getAnalysesForPortfolio(Long portfolioId) { return List.of(); }
     public RiskAnalysisServiceImpl(
     RiskAnalysisResultRepository resultRepo,
@@ -18,3 +32,4 @@ public class RiskAnalysisServiceImpl implements RiskAnalysisService {
     RiskThresholdRepository thresholdRepo
 );
 }
+

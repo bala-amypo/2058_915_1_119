@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserPortfolioController {
     @Autowired
     private UserPortfolioService portfolioService;
-    
+    private final UserPortfolioService userPortfolioService;
+
+public UserPortfolioController(UserPortfolioService userPortfolioService) {
+    this.userPortfolioService = userPortfolioService;
+}
+
     @PostMapping
     public ResponseEntity<UserPortfolio> createPortfolio(@RequestBody UserPortfolio portfolio) {
         return ResponseEntity.ok(portfolioService.createPortfolio(portfolio));
