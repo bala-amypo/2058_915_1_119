@@ -13,5 +13,5 @@ public class RiskAnalysisServiceImpl implements RiskAnalysisService {
     UserPortfolioRepository portfolioRepo,
     PortfolioHoldingRepository holdingRepo,
     RiskThresholdRepository thresholdRepo
-)
+);
 }
