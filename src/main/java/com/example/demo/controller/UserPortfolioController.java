@@ -25,5 +25,5 @@ public class UserPortfolioController {
 public ResponseEntity<?> getPortfoliosByUser(@PathVariable Long userId) {
     return ResponseEntity.ok(userPortfolioService.getPortfoliosByUser(userId));
 }
-
+    
 }
