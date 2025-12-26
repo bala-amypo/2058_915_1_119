@@ -9,14 +9,8 @@ import java.util.List;
 @RequestMapping("/api/holdings")
 public class PortfolioHoldingController {
     
-    @PostMapping("/{portfolioId}/{stockId}")
-    public ResponseEntity<PortfolioHolding> createHolding(
-            @PathVariable Long portfolioId, 
-            @PathVariable Long stockId,
-            @RequestBody PortfolioHolding holding) {
-        return ResponseEntity.ok(holding);
-    }
-    
+    @PostMapping
+public PortfolioHolding create(@RequestBody PortfolioHolding holding)
     @GetMapping("/portfolio/{portfolioId}")
     public ResponseEntity<List<PortfolioHolding>> getHoldingsByPortfolio(@PathVariable Long portfolioId) {
         return ResponseEntity.ok(List.of());

@@ -7,16 +7,10 @@ import com.example.demo.model.RiskAnalysisResult;
 @RestController
 @RequestMapping("/api/risk-analysis")
 public class RiskAnalysisController {
-    
-    @PostMapping("/{portfolioId}")
-    public ResponseEntity<RiskAnalysisResult> createAnalysis(
-            @PathVariable Long portfolioId,
-            @RequestBody RiskAnalysisResult analysis) {
-        return ResponseEntity.ok(analysis);
-    }
-    
-    @GetMapping("/{portfolioId}")
-    public ResponseEntity<RiskAnalysisResult> getAnalysis(@PathVariable Long portfolioId) {
-        return ResponseEntity.ok(new RiskAnalysisResult());
-    }
+    @PostMapping("/analyze/{portfolioId}")
+public RiskAnalysisResult analyze(@PathVariable Long portfolioId)
+    @GetMapping("/{id}")
+public RiskAnalysisResult getById(@PathVariable Long id)
+    @GetMapping("/portfolio/{portfolioId}")
+public List<RiskAnalysisResult> getByPortfolio(@PathVariable Long portfolioId)
 }
