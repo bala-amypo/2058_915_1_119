@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface RiskThresholdRepository {
     RiskThreshold save(RiskThreshold threshold);
     RiskThreshold findById(Long id);
+    RiskThreshold findByActiveTrue();
 }
